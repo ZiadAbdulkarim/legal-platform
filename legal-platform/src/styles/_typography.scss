@@ -1,0 +1,189 @@
+// ==============================================================================
+// Judicial Design System - Typography & Legal Readability
+// Fonts: Cairo (Primary UI & Headings), Tajawal (Alternate Legal Text)
+// Designed for prolonged reading of official prosecution files & court rulings
+// ==============================================================================
+
+@import "variables";
+
+// Google Fonts imports for Cairo and Tajawal
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@300;400;500;700&display=swap');
+
+$font-primary: 'Cairo', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+$font-legal:   'Tajawal', 'Cairo', serif;
+$font-mono:    'SFMono-Regular', Consolas, 'Courier New', monospace;
+
+// Typography Scale
+$font-size-2xs:  0.725rem; // 11.6px - Legal timestamps & fine notes
+$font-size-xs:   0.8125rem; // 13px - Badges, meta tags, law article numbers
+$font-size-sm:   0.875rem;  // 14px - Auxiliary annotations & sidebar links
+$font-size-base: 1rem;      // 16px - Base text
+$font-size-md:   1.0625rem; // 17px - Primary legal description reading size
+$font-size-lg:   1.1875rem; // 19px - Charge subsection headings (بوصف أن المتهم)
+$font-size-xl:   1.375rem;  // 22px - Topic card titles
+$font-size-2xl:  1.625rem;  // 26px - Category headings
+$font-size-3xl:  2rem;      // 32px - Page hero headings
+$font-size-4xl:  2.375rem;  // 38px - Official Portal Main Title
+
+// Line Heights optimized for Arabic Diacritics and Formal Legal Prose
+$line-height-tight:  1.35;
+$line-height-normal: 1.6;
+$line-height-legal:  1.85; // Essential for reading multi-clause criminal indictments
+$line-height-loose:  2.05;
+
+// Font Weights
+$font-weight-regular: 400;
+$font-weight-medium:  500;
+$font-weight-semibold:600;
+$font-weight-bold:    700;
+$font-weight-heavy:   800;
+
+// Base Document Typography
+html {
+  font-family: $font-primary;
+  font-size: 16px;
+  direction: rtl;
+  text-align: right;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: $color-text-primary;
+  background-color: $color-bg-main;
+  line-height: $line-height-normal;
+  margin: 0;
+  padding: 0;
+}
+
+// Judicial Headings
+h1, h2, h3, h4, h5, h6,
+.legal-h1, .legal-h2, .legal-h3, .legal-h4 {
+  font-family: $font-primary;
+  color: $color-text-headings;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin-top: 0;
+  margin-bottom: $space-md;
+  letter-spacing: -0.01em;
+}
+
+h1, .legal-h1 {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-heavy;
+  color: $color-primary-900;
+  position: relative;
+  padding-bottom: $space-sm;
+  
+  &.with-accent::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 64px;
+    height: 3px;
+    background-color: $color-gold;
+    border-radius: $radius-full;
+  }
+}
+
+h2, .legal-h2 {
+  font-size: $font-size-2xl;
+  color: $color-primary-800;
+  border-right: 4px solid $color-primary;
+  padding-right: $space-sm;
+}
+
+h3, .legal-h3 {
+  font-size: $font-size-xl;
+  color: $color-primary-700;
+  font-weight: $font-weight-bold;
+}
+
+h4, .legal-h4 {
+  font-size: $font-size-lg;
+  color: $color-primary-600;
+  font-weight: $font-weight-semibold;
+}
+
+// Legal Memoranda Text Formatting
+.legal-prose {
+  font-family: $font-legal;
+  font-size: $font-size-md;
+  line-height: $line-height-legal;
+  color: $color-text-primary;
+
+  p {
+    margin-bottom: $space-md;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+}
+
+// Official Citation & Referral Formula Style (تقيد جنحة اقتصادية بالمواد...)
+.legal-formula-text {
+  font-family: $font-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-primary-900;
+  line-height: $line-height-legal;
+  background-color: $color-primary-50;
+  border-right: 4px solid $color-gold;
+  padding: $space-md $space-lg;
+  border-radius: 0 $radius-md $radius-md 0;
+  margin: $space-sm 0 $space-md;
+}
+
+// Charge Clauses List (بوصف أن المتهم)
+.charge-clause-item {
+  font-family: $font-legal;
+  font-size: $font-size-md;
+  line-height: $line-height-legal;
+  color: $color-text-primary;
+  position: relative;
+  padding-right: $space-lg;
+  margin-bottom: $space-sm;
+  
+  &::before {
+    content: '▪';
+    position: absolute;
+    right: 0;
+    color: $color-primary;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+}
+
+// Muted metadata & labels
+.legal-label {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $color-text-muted;
+  margin-bottom: $space-xs;
+}
+
+// Legal Emphasis & Placeholders (e.g. / ..........)
+.legal-placeholder {
+  color: $color-text-muted;
+  font-family: $font-mono;
+  letter-spacing: 0.1em;
+  font-weight: $font-weight-bold;
+  padding: 0 4px;
+}
+
+// Circular Quote & Notes Box
+.circular-citation {
+  font-family: $font-legal;
+  font-size: $font-size-sm;
+  line-height: 1.7;
+  color: $color-text-secondary;
+  border-right: 3px solid $color-gold;
+  background-color: $color-gold-50;
+  padding: $space-sm $space-md;
+  margin: $space-sm 0;
+  border-radius: 0 $radius-sm $radius-sm 0;
+}
+

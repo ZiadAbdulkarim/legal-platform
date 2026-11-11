@@ -1,0 +1,124 @@
+// ==============================================================================
+// Judicial Design System - Master Stylesheet
+// Application: منصة قيود وأوصاف الجنح الاقتصادية - النيابة العامة والمحاكم الاقتصادية
+// ==============================================================================
+
+@import "variables";
+@import "typography";
+@import "components";
+
+// Container & Layout Utilities
+.legal-container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $space-lg;
+  padding-right: $space-lg;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// Judicial App Header Ribbon
+.legal-header {
+  background-color: $color-primary-900;
+  border-bottom: 3px solid $color-gold;
+  color: #FFFFFF;
+  padding: $space-md 0;
+  box-shadow: $shadow-card;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-md;
+  }
+
+  &__identity {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+  }
+
+  &__emblem {
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba($color-gold, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-gold;
+    font-size: 1.5rem;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-heavy;
+    color: #FFFFFF;
+    line-height: 1.2;
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: $font-size-xs;
+    color: $color-gold-200;
+  }
+}
+
+// Grid Layout for Topics
+.legal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: $space-lg;
+  margin-top: $space-lg;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Search and Filter Bar
+.legal-search-bar {
+  background-color: $color-surface;
+  border: $border-subtle;
+  border-radius: $radius-md;
+  padding: $space-md;
+  box-shadow: $shadow-sm;
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  margin: $space-xl 0 $space-lg;
+
+  &__input-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 12px 42px 12px 16px;
+    border: 1px solid $color-border-medium;
+    border-radius: $radius-sm;
+    font-family: $font-primary;
+    font-size: $font-size-base;
+    box-sizing: border-box;
+    transition: border-color $transition-fast;
+
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.12);
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $color-text-muted;
+  }
+}
+
